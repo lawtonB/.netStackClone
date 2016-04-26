@@ -33,13 +33,14 @@ namespace StackClone
         public void Configure(IApplicationBuilder app)
         {
             app.UseIISPlatformHandler();
-            app.UseIdentity();
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Account}/{action=Index}/{id?}");
             });
+            app.UseIdentity();
             app.Run(async (context) =>
             {
                 await context.Response.WriteAsync("Hello World!");

@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model StackClone.Models.Post
+<h2>Post Details</h2>
+<hr />
+@Html.DisplayFor(model => model.Content)
+<p>@Html.ActionLink("Back to list", "Index")</p>

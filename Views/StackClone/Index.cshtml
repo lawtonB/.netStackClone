@@ -1,5 +1,28 @@
-﻿@{
+﻿@*@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@using System.Security.Claims
+
+@model IEnumerable<StackClone.Models.Post>*@
+
+<h2>Here is your list of Posts</h2>
+<hr />
+
+@*@if (Model.Any())
+{
+    <ul>
+        @foreach (var listPost in Model)
+        {
+            <li>@Html.DisplayFor(modelPost => listPost.Content) | @Html.ActionLink("Details", "Details", new { id = listPost.id})</li>
+
+        }
+    </ul>
+}
+else
+{
+    <p>You have no posts yet!</p>
+
+}*@
+@*@Html.ActionLink("Create new", "Create")*@

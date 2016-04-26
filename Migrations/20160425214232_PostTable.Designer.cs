@@ -8,9 +8,10 @@ using StackClone.Models;
 namespace StackClone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160425214232_PostTable")]
+    partial class PostTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -98,22 +99,6 @@ namespace StackClone.Migrations
                     b.HasAnnotation("Relational:TableName", "AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("StackClone.Models.Answer", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Content");
-
-                    b.Property<int?>("Postid");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("id");
-
-                    b.HasAnnotation("Relational:TableName", "Answers");
-                });
-
             modelBuilder.Entity("StackClone.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id");
@@ -162,20 +147,6 @@ namespace StackClone.Migrations
                     b.HasAnnotation("Relational:TableName", "AspNetUsers");
                 });
 
-            modelBuilder.Entity("StackClone.Models.Post", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Content");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("id");
-
-                    b.HasAnnotation("Relational:TableName", "Posts");
-                });
-
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNet.Identity.EntityFramework.IdentityRole")
@@ -203,24 +174,6 @@ namespace StackClone.Migrations
                         .WithMany()
                         .HasForeignKey("RoleId");
 
-                    b.HasOne("StackClone.Models.ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("StackClone.Models.Answer", b =>
-                {
-                    b.HasOne("StackClone.Models.Post")
-                        .WithMany()
-                        .HasForeignKey("Postid");
-
-                    b.HasOne("StackClone.Models.ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("StackClone.Models.Post", b =>
-                {
                     b.HasOne("StackClone.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId");
